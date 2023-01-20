@@ -10,19 +10,10 @@ const textColorSelect = document.getElementById("text-color-select");
 // Get the reset button
 const resetButton = document.getElementById("reset-button");
 
+// Add an event listener to the reset button
+resetButton.addEventListener("click", resetForm);
 // Get the show results button
 const showResultsButton = document.getElementById("show-results-button");
-
-// Add an event listener to the reset button to clear the form inputs
-resetButton.addEventListener("click", function () {
-  nameInput.value = "";
-  jobTitleInput.value = "";
-  birthyearInput.value = "";
-  phoneInput.value = "";
-  bgColorSelect.selectedIndex = 0;
-  fontSelect.selectedIndex = 0;
-  textColorSelect.selectedIndex = 0;
-});
 
 // Add an event listener to the show results button to display the results
 showResultsButton.addEventListener("click", function () {
@@ -65,7 +56,43 @@ showResultsButton.addEventListener("click", function () {
 
   // Show the results container
   resultsContainer.style.display = "block";
-
+  resetButton.addEventListener("click", resetForm);
   // Hide the form inputs and options
   document.getElementById("form").style.display = "none";
+});
+
+function resetForm() {
+  // Clear the values of all the input and select elements
+  nameInput.value = "";
+  jobTitleInput.value = "";
+  birthyearInput.value = "";
+  phoneInput.value = "";
+  bgColorSelect.value = "red";
+  fontSelect.value = "Arial";
+  textColorSelect.value = "black";
+
+  // Reset the background color, font family, and text color of the container element
+  const container = document.getElementById("container");
+  container.style.backgroundColor = "white";
+  container.style.fontFamily = "sans-serif";
+  container.style.color = "black";
+}
+resetButton.addEventListener("click", function () {
+  // remove the results container from the body
+  document.body.removeChild(document.getElementById("results-container"));
+  // Clear the values of all the input and select elements
+  nameInput.value = "";
+  jobTitleInput.value = "";
+  birthyearInput.value = "";
+  phoneInput.value = "";
+  bgColorSelect.value = "red";
+  fontSelect.value = "Arial";
+  textColorSelect.value = "black";
+  // Reset the background color, font family, and text color of the container element
+  const container = document.getElementById("container");
+  container.style.backgroundColor = "white";
+  container.style.fontFamily = "sans-serif";
+  container.style.color = "black";
+  // Show the form inputs and options
+  document.getElementById("form").style.display = "block";
 });
